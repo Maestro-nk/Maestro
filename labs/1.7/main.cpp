@@ -1,78 +1,59 @@
 #include <iostream>
+static int sA = 12;
+static int sB;
+
 
 int main()
 {
-	{
-		const char CONST1 = '+';
-		char chVar1;
-		chVar1 = 'f';
-		char chVar2 = '4';
-		const char CONST2 = 0x30;
-		char chVar3;
-		chVar3 = 0x7;
-		char chVar4 = 0x79;
+    sB = 13;
+    {
+        int nA = 5;
+        static int sExample = 3;
+        nA = sA * sB;
+    }
 
-	}
-	{
-		int nA;
+    sA += 13;
+    sB++;
+    {
+        int nB = 4;
+        {
+            nB = 3;
+            int nC = 7;
+        }
+    }
 
-		float fltB;
+    float fltk = 20;
+    int nL = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        static int nF = 0;
+        nF++;
+        int nS = 0;
+        nS++;
+        nL++;
+    }
 
-		unsigned short wC;
+    for (int i = 0; i < 5; i = i + 1)
+    {
 
-		nA = 31765;
+        static int iA = 0;
 
-		fltB = -7.293e3;
+        int iB = 0;
 
-		wC = 26543;
+        iA = iA + 1;
 
+        iB = iB + 1;
 
-		double dblD;
+    }
 
-		int nE;
+    int* pI; 
+    pI = new int;
+    *pI = 66;
+    delete pI; 
 
-		char chF;
-
-
-
-		dblD = nA;
-
-		nE = fltB;
-
-		chF = wC;
-
-
-
-		dblD = (double)nA;
-
-		nE = (int)fltB;
-
-		chF = (char)wC;
-
-		double* pdblD;
-
-		void* pV;
-
-		pV = &nA;
-
-		pdblD = (double*)pV;
-
-		dblD = *pdblD;
-
-		int* pnE;
-
-		pV = &fltB;
-
-		pnE = (int*)pV;
-
-		nE = *pnE;
-
-		char* pchF;
-
-		pV = &wC;
-
-		pchF = (char*)pV;
-
-		chF = *pchF;
-	}
+    int* pW; 
+    pW = new int;
+    pW = pI; 
+    *pW = 88;
+    delete pW;
 }
