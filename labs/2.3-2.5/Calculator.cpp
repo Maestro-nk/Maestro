@@ -58,9 +58,6 @@ string infixToPostfix(const string& expression) {
             operators.push(c);
             i++;
         }
-        else {
-            throw runtime_error("Error: Invalid character in expression");
-        }
     }
 
     while (!operators.empty()) {
@@ -111,9 +108,6 @@ int evaluatePostfix(const string& expression) {
             operands.push(result);
             i++;
         }
-        else {
-            throw runtime_error("Error: Invalid character in postfix expression");
-        }
     }
 
     return operands.top();
@@ -121,7 +115,7 @@ int evaluatePostfix(const string& expression) {
 
 int main() {
     string expression;
-    cout << "Enter an infix expression: ";
+    cout << "Enter expression: ";
     getline(cin, expression);
 
     try {
