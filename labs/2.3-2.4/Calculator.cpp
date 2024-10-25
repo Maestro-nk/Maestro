@@ -49,7 +49,7 @@ string infixToPostfix(const string& expression) {
             operators.pop();
             i++;
         }
-        else if (precedence(c) > 0) {
+        else if (c == '+' || c == '-' || c == '*' || c == '/') {
             while (!operators.empty() && precedence(operators.top()) >= precedence(c)) {
                 postfix += operators.top();
                 postfix += ' ';
@@ -57,6 +57,9 @@ string infixToPostfix(const string& expression) {
             }
             operators.push(c);
             i++;
+        }
+        else {
+            throw runtime_error("Error: Invalid character in expression");
         }
     }
 
@@ -101,13 +104,16 @@ int evaluatePostfix(const string& expression) {
             }
             operands.push(num);
         }
-        else if (precedence(expression[i]) > 0) {
+        else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/') {
             int operand2 = operands.top(); operands.pop();
             int operand1 = operands.top(); operands.pop();
             int result = performOperation(expression[i], operand1, operand2);
             operands.push(result);
             i++;
         }
+        /*else {
+            throw runtime_error("Error: Invalid character in postfix expression");
+        }*/
     }
 
     return operands.top();
@@ -115,7 +121,7 @@ int evaluatePostfix(const string& expression) {
 
 int main() {
     string expression;
-    cout << "Enter expression: ";
+    cout << "Enter an expression: ";
     getline(cin, expression);
 
     try {
